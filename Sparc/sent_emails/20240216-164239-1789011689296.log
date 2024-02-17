@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: kigojomo@gmail.com
+Date: Fri, 16 Feb 2024 13:42:39 -0000
+Message-ID: <170809095982.13876.5819319168487839411@Nova>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/MQ/c2i133-81fb3dec50d9d783fc45de67c4839f91/
+
+Your username, in case you’ve forgotten: kigojomo@gmail.com
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

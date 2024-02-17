@@ -1,0 +1,28 @@
+{% extends "registration/form.html" %}
+{% load static %}
+{% block title %}
+Login to Sparc
+{% endblock title %}
+{% block content %}
+<form method="post">
+    <h2>Log In to your account</h2>
+    {% csrf_token %}
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">mail</span>
+        <label for="id_username">email:</label>
+        {{ form.username }}
+    </div>
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">lock</span>
+        <label for="id_password">password:</label>
+        {{ form.password}}
+        <span class="material-symbols-outlined visibilityTrigger">visibility</span>
+    </div>
+    <div class="links">
+        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'password_reset' %}">Forgot Password?</a>
+    </div>
+    <button type="submit">Log In</button>
+</form>
+<script src="{% static 'scripts/login.js' %}"></script>
+{% endblock content %}

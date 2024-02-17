@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #e2e2e2;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
+html body {
+  width: 100%;
+  height: 100%;
+  background-color: #141414;
+}/*# sourceMappingURL=home.css.map */

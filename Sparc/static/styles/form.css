@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;300;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "Kanit", sans-serif;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 1.625rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+button,
+h3 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+a,
+p {
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+a {
+  text-transform: capitalize;
+}
+
+.huge_text {
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+html {
+  height: 100vh;
+  overflow: hidden;
+}
+html body {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  position: relative;
+}
+html body #bodyBackgroundLogo {
+  position: absolute;
+  z-index: -1;
+  width: 70vw;
+  height: 40vh;
+}
+html body form {
+  width: 475px;
+  max-height: 80vh;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.2509803922);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 1px solid #aeaeae;
+  position: relative;
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+html body form::before, html body form::after {
+  position: absolute;
+  content: "";
+  bottom: 100%;
+  height: 100%;
+  width: 0px;
+  border: 2px dotted #aeaeae;
+}
+html body form::before {
+  left: 10%;
+}
+html body form::after {
+  right: 10%;
+}
+html body form::-webkit-scrollbar {
+  margin-right: 20px;
+}
+html body form::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+html body form::-webkit-scrollbar-thumb {
+  background-color: #aeaeae;
+}
+html body form .fieldwrapper {
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid #aeaeae;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  position: relative;
+}
+html body form .fieldwrapper .material-symbols-outlined {
+  height: 24px;
+  width: 24px;
+  color: #ffffff;
+  fill: #ffffff;
+}
+html body form .fieldwrapper label {
+  position: absolute;
+  z-index: -1;
+  left: 44px;
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: capitalize;
+  color: #aeaeae;
+  transition: all 0.5s ease;
+}
+html body form .fieldwrapper label:has(~ input:focus) {
+  font-size: 0.75rem;
+  top: -5px;
+}
+html body form .fieldwrapper input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-weight: 100;
+}
+html body form .fieldwrapper input:focus {
+  outline: none;
+}
+html body form .fieldwrapper .visibilityTrigger {
+  cursor: pointer;
+  display: none;
+}
+html body form .links {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+html body form .links a {
+  color: #aeaeae;
+}
+html body form button {
+  background-color: #2553a8;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.2509803922);
+  padding: 10px 0px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+html body form button:hover {
+  background-color: #1c3e7e;
+}/*# sourceMappingURL=form.css.map */

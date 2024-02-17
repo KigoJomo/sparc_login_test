@@ -1,0 +1,48 @@
+{% extends "registration/form.html" %}
+{% load static %}
+{% block title %}
+Create A Sparc Account
+{% endblock title %}
+{% block content %}
+<form method="post">
+    <h2>Let's create your account</h2>
+    {% csrf_token %}
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">tag</span>
+        <label for="id_reg_number">registration number:</label>
+        {{ form.reg_number }}
+    </div>
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">person</span>
+        <label for="id_first_name">first name:</label>
+        {{ form.first_name }}
+    </div>
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">person</span>
+        <label for="id_last_name">last name:</label>
+        {{ form.last_name }}
+    </div>
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">mail</span>
+        <label for="id_email">student email:</label>
+        {{ form.email }}
+    </div>
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">lock</span>
+        <label for="id_password1">password:</label>
+        {{ form.password1 }}
+        <span class="material-symbols-outlined visibilityTrigger">visibility</span>
+    </div>
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">lock</span>
+        <label for="id_password2">re-enter your password:</label>
+        {{ form.password2 }}
+        <span class="material-symbols-outlined visibilityTrigger">visibility</span>
+    </div>
+    <div class="links">
+        <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+    </div>
+    <button type="submit">sign up</button>
+</form>
+<script src="{% static 'scripts/signup.js' %}"></script>
+{% endblock content %}
