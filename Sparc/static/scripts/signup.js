@@ -5,6 +5,9 @@ const lastNameInput = document.getElementById("id_last_name");
 const emailInput = document.getElementById("id_email");
 const passInput1 = document.getElementById("id_password1");
 const passInput2 = document.getElementById("id_password2");
+const courseInput = document.getElementById("id_course_code");
+const yearInput = document.getElementById("id_year");
+const semInput = document.getElementById("id_semester");
 
 const inputs = [
   regInput,
@@ -13,6 +16,9 @@ const inputs = [
   emailInput,
   passInput1,
   passInput2,
+  courseInput,
+  yearInput,
+  semInput,
 ];
 function checkEmptyInput(element) {
   const elementId = element.id;

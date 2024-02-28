@@ -111,10 +111,10 @@ html {
       &::-webkit-scrollbar {
         margin-right: 20px;
       }
-      &::-webkit-scrollbar-track{
+      &::-webkit-scrollbar-track {
         background-color: transparent;
       }
-      &::-webkit-scrollbar-thumb{
+      &::-webkit-scrollbar-thumb {
         background-color: $dark-white;
       }
       .fieldwrapper {
@@ -146,13 +146,35 @@ html {
             top: -5px;
           }
         }
+        #id_reg_number,
+        #id_first_name,
+        #id_last_name{
+          text-transform: capitalize;
+        }
         input {
           width: 100%;
           background: transparent;
           border: none;
-          font-weight: 100;
+          font-weight: 300;
           &:focus {
             outline: none;
+          }
+        }
+        select {
+          width: 100%;
+          background: transparent;
+          border: none;
+          font-size: 1rem;
+          font-weight: 300;
+          color: $white;
+          &:focus {
+            outline: none;
+            border: none;
+          }
+          option {
+            color: $black;
+            background: $tint;
+            font-size: 0.9rem;
           }
         }
         .visibilityTrigger {

@@ -25,7 +25,24 @@ Create A Sparc Account
     <div class="fieldwrapper">
         <span class="material-symbols-outlined">mail</span>
         <label for="id_email">student email:</label>
-        {{ form.email }}
+        <!-- {{ form.email }} -->
+        <input type="email" name="email" maxlength="254" autofocus="" required="" id="id_email"
+            pattern="[a-z0-9._%+-]+@students.dkut.ac.ke">
+    </div>
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">auto_stories</span>
+        <!-- <label for="id_course">Course: </label> -->
+        {{ form.course }}
+    </div>
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">event</span>
+        <label for="id_year">Year of study: </label>
+        {{ form.year }}
+    </div>
+    <div class="fieldwrapper">
+        <span class="material-symbols-outlined">event</span>
+        <label for="id_semester">Semester: </label>
+        {{ form.semester }}
     </div>
     <div class="fieldwrapper">
         <span class="material-symbols-outlined">lock</span>

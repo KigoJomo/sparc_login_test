@@ -136,14 +136,36 @@ html body form .fieldwrapper label:has(~ input:focus) {
   font-size: 0.75rem;
   top: -5px;
 }
+html body form .fieldwrapper #id_reg_number,
+html body form .fieldwrapper #id_first_name,
+html body form .fieldwrapper #id_last_name {
+  text-transform: capitalize;
+}
 html body form .fieldwrapper input {
   width: 100%;
   background: transparent;
   border: none;
-  font-weight: 100;
+  font-weight: 300;
 }
 html body form .fieldwrapper input:focus {
   outline: none;
+}
+html body form .fieldwrapper select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #ffffff;
+}
+html body form .fieldwrapper select:focus {
+  outline: none;
+  border: none;
+}
+html body form .fieldwrapper select option {
+  color: #141414;
+  background: rgba(0, 0, 0, 0.2509803922);
+  font-size: 0.9rem;
 }
 html body form .fieldwrapper .visibilityTrigger {
   cursor: pointer;

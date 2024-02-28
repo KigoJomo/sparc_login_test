@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: chloe@students.dkut.ac.ke
+Date: Thu, 22 Feb 2024 06:23:09 -0000
+Message-ID: <170858298979.2164.18334721446744777622@Nova>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/QzAyNy0wMS0xMjI0LzIwMjI/c2skql-0c94c9abfc2cd11ce3d43c366dbc8f04/
+
+Your username, in case you’ve forgotten: chloe@students.dkut.ac.ke
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,446 @@
+This is a script I have for adding units to my database (in django)
+
+#add_units.py
+import os
+import django
+# import random
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Sparc.settings")
+django.setup()
+
+# save_units_to_db.py
+
+from main.models import Course, Unit
+
+def add_units_to_database():
+    units_data = [
+        {'code': 'CIT 2101', 'name': 'Database Systems', 'course': 'C025'},
+        {'code': 'EEE 3101', 'name': 'Digital Circuits and Logic', 'course': 'E034'},
+        {'code': 'BIT 1101', 'name': 'Introduction to Business Information Technology', 'course': 'C027'},
+        {'code': 'CSC 2201', 'name': 'Algorithms and Data Structures', 'course': 'C028'},
+        {'code': 'CIT 2202', 'name': 'Web Development', 'course': 'C025'},
+        {'code': 'EEE 3201', 'name': 'Power Systems', 'course': 'E034'},
+        {'code': 'BIT 2101', 'name': 'Business Analysis and Design', 'course': 'C027'},
+        {'code': 'CSC 2301', 'name': 'Operating Systems', 'course': 'C028'},
+        {'code': 'CIT 2203', 'name': 'Mobile App Development', 'course': 'C025'},
+        {'code': 'EEE 3301', 'name': 'Signals and Systems', 'course': 'E034'},
+        {'code': 'BIT 2201', 'name': 'Enterprise Systems', 'course': 'C027'},
+        {'code': 'CSC 2401', 'name': 'Software Engineering', 'course': 'C028'},
+        {'code': 'CIT 2104', 'name': 'Computer Networks', 'course': 'C025'},
+        {'code': 'EEE 3401', 'name': 'Communication Systems', 'course': 'E034'},
+        {'code': 'BIT 2301', 'name': 'E-Business Technologies', 'course': 'C027'},
+        {'code': 'CIT 2301', 'name': 'Advanced Database Systems', 'course': 'C025'},
+        {'code': 'EEE 3501', 'name': 'Advanced Digital Circuits', 'course': 'E034'},
+        {'code': 'BIT 2401', 'name': 'Advanced Business Information Technology', 'course': 'C027'},
+        {'code': 'CSC 2501', 'name': 'Advanced Algorithms', 'course': 'C028'},
+        {'code': 'CIT 2401', 'name': 'Advanced Web Development', 'course': 'C025'},
+        {'code': 'EEE 3601', 'name': 'Advanced Power Systems', 'course': 'E034'},
+        {'code': 'BIT 2501', 'name': 'Advanced Business Analysis', 'course': 'C027'},
+        {'code': 'CSC 2601', 'name': 'Advanced Operating Systems', 'course': 'C028'},
+        {'code': 'CIT 2501', 'name': 'Advanced Mobile App Development', 'course': 'C025'},
+        {'code': 'EEE 3701', 'name': 'Advanced Signals and Systems', 'course': 'E034'},
+        {'code': 'BIT 2601', 'name': 'Advanced Enterprise Systems', 'course': 'C027'},
+        {'code': 'CSC 2701', 'name': 'Advanced Software Engineering', 'course': 'C028'},
+        {'code': 'CIT 2601', 'name': 'Advanced Computer Networks', 'course': 'C025'},
+        {'code': 'EEE 3801', 'name': 'Advanced Communication Systems', 'course': 'E034'},
+        {'code': 'BIT 2701', 'name': 'Advanced E-Business Technologies', 'course': 'C027'},
+        {'code': 'CIT 2701', 'name': 'Advanced Artificial Intelligence', 'course': 'C028'},
+        {'code': 'EEE 3901', 'name': 'Advanced Robotics', 'course': 'E034'},
+        {'code': 'BIT 2801', 'name': 'Advanced Data Science', 'course': 'C027'},
+        {'code': 'CSC 2801', 'name': 'Advanced Machine Learning', 'course': 'C028'},
+        # Add more units as needed
+    ]
+
+    counter = 1
+
+    for unit_data in units_data:
+        course = Course.objects.get(code=unit_data['course'])
+        Unit.objects.create(code=unit_data['code'], name=unit_data['name'], course=course)
+        print (f"Added Unit: {counter}")
+        counter = counter + 1
+
+if __name__ == "__main__":
+    add_units_to_database()
+
+
+I need you to modify the code so that it doesn't just generally add units to the database, there's some certain criteria that need to be followed:
+1. Each course has four years. Each year has two semsters, and each semester has 7 units. Therefore, each Course will be associated with a total of 56 units.
+2. The code above doesn't specify the year and semester fields of the Unit model, which is defined as follows:
+	class Unit(models.Model):
+	    code = models.CharField(primary_key=True, unique=True, max_length=50)
+	    name = models.CharField(max_length=250)
+	    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+	    year = models.IntegerField()
+	    semester = models.IntegerField()
+
+3. The existing courses are as follows:
+	[
+		{'code': 'C025', 'name': 'BSc Information Technology'},
+		{'code': 'E034', 'name': 'BSc Electrical Engineering'},
+		{'code': 'C027', 'name': 'BSc Business Information Technology'},
+		{'code': 'C028', 'name': 'BSc Computer Science'},
+	]
+
+Come up with names and codes for courses if necessary.
+
+
+
+
+I have this output:
+
+C027-01-1224/2022 stage: 2.2
+
+Year: 1 Semester: 1
+
+Unit 111 - 71
+
+Year: 1 Semester: 1
+
+Unit 112 - 86
+
+Year: 1 Semester: 1
+
+Unit 113 - 32
+
+Year: 1 Semester: 1
+
+Unit 114 - 86
+
+Year: 1 Semester: 1
+
+Unit 115 - 86
+
+Year: 1 Semester: 1
+
+Unit 116 - 49
+
+Year: 1 Semester: 1
+
+Unit 117 - 88
+
+Year: 1 Semester: 2
+
+Unit 121 - 27
+
+Year: 1 Semester: 2
+
+Unit 122 - 55
+
+Year: 1 Semester: 2
+
+Unit 123 - 29
+
+Year: 1 Semester: 2
+
+Unit 124 - 45
+
+Year: 1 Semester: 2
+
+Unit 125 - 35
+
+Year: 1 Semester: 2
+
+Unit 126 - 78
+
+Year: 1 Semester: 2
+
+Unit 127 - 87
+
+Year: 2 Semester: 1
+
+Unit 211 - 98
+
+Year: 2 Semester: 1
+
+Unit 212 - 66
+
+Year: 2 Semester: 1
+
+Unit 213 - 74
+
+Year: 2 Semester: 1
+
+Unit 214 - 10
+
+Year: 2 Semester: 1
+
+Unit 215 - 65
+
+Year: 2 Semester: 1
+
+Unit 216 - 70
+
+Year: 2 Semester: 1
+
+Unit 217 - 83
+
+Year: 2 Semester: 2
+
+Unit 221 - 58
+
+Year: 2 Semester: 2
+
+Unit 222 - 37
+
+Year: 2 Semester: 2
+
+Unit 223 - 66
+
+Year: 2 Semester: 2
+
+Unit 224 - 27
+
+Year: 2 Semester: 2
+
+Unit 225 - 46
+
+Year: 2 Semester: 2
+
+Unit 226 - 23
+
+Year: 2 Semester: 2
+
+Unit 227 - 36
+
+from this code:
+<p>{{ user.reg_number }} stage: {{ user.year }}.{{ user.semester }}</p>
+        <p>{% for performance in performances %}
+        <p>Year: {{ performance.unit.year }} Semester: {{ performance.unit.semester }}</p>
+        <p>{{ performance.unit.name }} - {{ performance.score }}</p>
+        {% endfor %}</p>
+
+How do I instead display a bar graph for each semester, using native JS, ... no external scripts.
+
+
+def dashboard(request):
+    upcoming_dates = ImportantDate.objects.filter(date__gte=timezone.now())
+    user = request.user
+    performances = Performance.objects.filter(user=user.reg_number)
+
+    context = {
+        'upcoming_dates': upcoming_dates,
+        'performances': performances,
+    }
+    return render(request, 'main/dashboard.html', context)
+
+How do I access the performances array in js in my dashboard.html template?
+
+
+Let's say I have tasks.html template. This template is supposed to have two forms. First one is for searching for tasks that are related to the user. The search parameter can be the title of the task or the unit associated with it. Here's what my Task, unit and user models look like in models.py:
+
+    class CustomUser(AbstractUser):
+        username = None
+        email = models.EmailField(_("email address"), unique=True)
+        reg_number = models.CharField(max_length=20, unique=True, primary_key=True)
+        course = models.ForeignKey(Course, on_delete=models.CASCADE, default="C025")
+        year = models.IntegerField(default=1)
+        semester = models.IntegerField(default=1)
+
+
+        USERNAME_FIELD = "email"
+        REQUIRED_FIELDS = []
+
+        objects = CustomUserManager()
+
+
+    class Unit(models.Model):
+        code = models.CharField(primary_key=True, unique=True, max_length=50)
+        name = models.CharField(max_length=250)
+        course = models.ForeignKey(Course, on_delete=models.CASCADE)
+        year = models.IntegerField()
+        semester = models.IntegerField()
+
+
+    class Task(models.Model):
+        title = models.CharField(max_length=100)
+        user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+        description = models.TextField()
+        unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+        status = models.CharField(max_length=250, default="Pending")
+        due_date = models.DateField()
+
+The second form is a task creation form. It basically allows the user to create a new task, and then it is added to the DB.
+
+How would I implement this?
+
+
+The task creation form still isn't showing.The button is there and when I click it only then do the fields appear on the page.
+
+#forms.py
+from django import forms
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from .models import CustomUser, Course, Task, Unit
+
+class CustomUserCreationForm(UserCreationForm):
+    course = forms.ModelChoiceField(queryset=Course.objects.all(), empty_label="Select a course")
+    reg_number = forms.CharField(max_length=20)
+    year = forms.IntegerField()
+    semester = forms.IntegerField()
+
+    class Meta:
+        model = CustomUser
+        fields = ("email", "reg_number","first_name","last_name", "course",)
+
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = CustomUser
+        fields = ("email",)
+
+class TaskSearchForm(forms.Form):
+    search_term = forms.CharField(label='Search by title or unit')
+
+class TaskCreationForm(forms.ModelForm):
+    title = forms.CharField(max_length=30)
+    description = forms.TextInput()
+    unit = forms.ModelChoiceField(queryset=Unit.objects.all(), empty_label="Unit")
+    due_date = forms.DateField()
+
+    class Meta:
+        model = Task
+        fields = ('title', 'description', 'unit', 'due_date',)
+
+#views.py
+from django.utils import timezone
+from .forms import CustomUserCreationForm, TaskSearchForm, TaskCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+from .models import Course, ImportantDate, Performance, Task, Unit
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, render, redirect
+
+class SignUpView(generic.CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "registration/signup.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['courses'] = Course.objects.all()
+        return context
+
+    def form_valid(self, form):
+        # Get the course_code from the form data
+        course = self.request.POST.get('course')
+
+        # Convert the course_code to a Course instance
+        course_instance = get_object_or_404(Course, code=course)
+
+        # Assign the Course instance to the CustomUser's course_code field
+        form.instance.course = course_instance
+
+        return super().form_valid(form)
+
+@login_required(login_url='login/')
+def dashboard(request):
+    upcoming_dates = ImportantDate.objects.filter(date__gte=timezone.now())
+    user = request.user
+    user_years = list(range(1, user.year + 1))
+    user_semesters = list(range(1, user.semester + 1))
+    performances = Performance.objects.filter(user=user.reg_number)
+
+    context = {
+        'upcoming_dates': upcoming_dates,
+        'performances': performances,
+        'user_years': user_years,
+        'user_semesters': user_semesters,
+    }
+    return render(request, 'main/dashboard.html', context)
+
+
+@login_required(login_url='login/')
+def tasks(request):
+    search_form = TaskSearchForm()
+    user = request.user
+    tasks = Task.objects.filter(user=user.reg_number)
+
+    if request.method == 'POST':
+        search_form = TaskSearchForm(request.POST)
+        if search_form.is_valid():
+            search_term = search_form.cleaned_data['search_term']
+            if search_term:
+                tasks = tasks.filter(title__icontains=search_term)
+    context = {
+        'tasks': tasks,
+        'search_form': search_form,
+    }
+    return render(request, 'main/tasks.html', context)
+
+@login_required(login_url='login/')
+def create_task(request):
+    user = request.user
+    create_form = TaskCreationForm()
+
+    if request.method == 'POST':
+        create_form = TaskCreationForm(request.POST)
+        if create_form.is_valid():
+            task = Task(
+                title=create_form.cleaned_data['title'],
+                user = user,
+                description = create_form.cleaned_data['description'],
+                unit = create_form.cleaned_data['unit'],
+                due_date = create_form.cleaned_data['due_date'],
+            )
+            task.save()
+            return redirect('tasks')
+    context = {
+        'create_form': create_form,
+    }
+    return render(request, 'main/tasks.html', context)
+
+@login_required(login_url='login/')
+def focus_hub(request):
+    return render(request, 'main/focus_hub.html')
+
+@login_required(login_url='login/')
+def resources(request):
+    return render(request, 'main/resources.html')
+
+@login_required(login_url='login/')
+def performance(request):
+    return render(request, 'main/performance.html')
+
+
+<!-- tasks.html-->
+
+    <form id="task_creation_form" action="{% url 'create_task' %}" method="POST">
+        {% csrf_token %}
+        {{ create_form.title }}
+        <button type="submit" id="task_added">Add task</button>
+    </form>
+
+
+def tasks(request):
+    user = request.user
+    search_form = TaskSearchForm()
+    create_form = TaskCreationForm()
+    tasks = Task.objects.filter(user=user.reg_number)
+
+    if request.method == 'POST':
+        if 'search_form_submit' in request.POST:
+            search_form = TaskSearchForm(request.POST)
+            if search_form.is_valid():
+                search_term = search_form.cleaned_data['search_term']
+                if search_term:
+                    tasks = tasks.filter(title__icontains=search_term)
+        elif 'create_form_submit' in request.POST:
+            create_form = TaskCreationForm(request.POST)
+            if create_form.is_valid():
+                task = Task(
+                    title=create_form.cleaned_data['title'],
+                    user = user,
+                    description = create_form.cleaned_data['description'],
+                    unit = create_form.cleaned_data['unit'],
+                    due_date = create_form.cleaned_data['due_date'],
+                )
+                task.save()
+                return redirect('tasks')
+    context = {
+        'tasks': tasks,
+        'search_form': search_form,
+        'create_form': create_form
+    }
+    return render(request, 'main/tasks.html', context)
+
+
+
+When I change the type attribute from =text to =date, i get a default placeholder "mm/dd/yy" and a date picker icon. Can I further customize these two?

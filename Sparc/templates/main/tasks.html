@@ -1,0 +1,126 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}
+Tasks
+{% endblock title %}
+
+{% block page_name %}
+Tasks
+{% endblock page_name %}
+
+{% block content %}
+<div class="tasks-content content">
+    <h4>easily manage your tasks</h4>
+    <form id="task_search_form" action="{% url 'tasks' %}" method="post">
+        {% csrf_token %}
+        <span class="material-symbols-outlined">search</span>
+        <input type="text" name="search_term" required="" id="id_search_term" placeholder="search by title or unit">
+        <!-- {{ search_form.search_term }} -->
+        <button type="submit" name="search_form_submit">
+            <span class="material-symbols-outlined">keyboard_return</span>
+        </button>
+    </form>
+
+    {% if search_form.cleaned_data.search_term %}
+    <div class="result_paragraph">
+        <p>Showing search results for</p>
+        <p class="search_term">
+            "{{ search_form.cleaned_data.search_term }}"
+        </p>
+        <a href="{% url 'tasks' %}" class="material-symbols-outlined">close</a>
+        </p>
+    </div>
+    {% endif %}
+
+    <div class="table">
+        <div class="heading_row row-flex">
+            <p class="header">title</p>
+            <p class="header" style="width: 25%;">description</p>
+            <p class="header" style="width: 15%;">unit</p>
+            <p class="header">status</p>
+            <p class="header">due date</p>
+        </div>
+        <div class="list">
+            {% for task in tasks %}
+            <div class="task row-flex">
+                <p class="title">{{ task.title }}</p>
+                <p class="description">{{ task.description }}</p>
+                <span class="full_description">{{ task.description }}</span>
+                <p class="unit">{{ task.unit.name }}</p>
+                <p class="status {{ task.status|lower }}" onclick="showOrHideForm('{{ task.id }}')" title="Click to view more options">{{ task.status }}</p>
+                <form method="post" action="{% url 'tasks' %}" id="form{{ task.id }}" class="action-buttons">
+                    {% csrf_token %}
+                    {{ task_status_form }}
+                    <input type="hidden" name="task_id" value="{{ task.id }}">
+                    <button type="submit" name="task_status_submit">Confirm</button>
+                </form>
+                <p class="due_date">{{ task.due_date }}</p>
+            </div>
+            {% endfor %}
+            <div class="invisible_task task"></div>
+        </div>
+    </div>
+
+    <button id="add_task_button">
+        <span class="material-symbols-outlined">add_circle</span>
+        <p>add a new task</p>
+    </button>
+
+    <form id="task_creation_form" action="{% url 'tasks' %}" method="POST">
+        {% csrf_token %}
+        <div class="fieldwrapper">
+            <h2>Add a new task</h2>
+            <p>Tackle your goals in daily doses</p>
+        </div>
+        <div class="fieldwrapper">
+            <label for="id_title">What shall we call this task?</label>
+            <span class="material-symbols-outlined">sell</span>
+            <input type="text" name="title" maxlength="30" required="" id="id_title">
+            <!-- {{ create_form.title }} -->
+        </div>
+        <div class="fieldwrapper">
+            <label for="id_description">let's describe this task a little</label>
+            <span class="material-symbols-outlined">edit</span>
+            <textarea name="description" cols="40" rows="10" required="" id="id_description"></textarea>
+            <!-- {{ create_form.description }} -->
+        </div>
+        <div class="fieldwrapper">
+            <label for="id_unit">Which unit is associated to this task?</label>
+            <span class="material-symbols-outlined">auto_stories</span>
+            {{ create_form.unit }}
+        </div>
+        <div class="fieldwrapper">
+            <label for="id_due_date">when is it due?</label>
+            <span class="material-symbols-outlined">event</span>
+            <!-- <input type="date" name="due_date" required="" id="id_due_date" placeholder="When is it due?"> -->
+            {{ create_form.due_date }}
+        </div>
+        <button type="submit" name="create_form_submit" id="task_added">
+            <span class="material-symbols-outlined">add_circle</span>
+            <p>add task</p>
+        </button>
+    </form>
+</div>
+{% endblock content %}
+{% block script %}
+<script>
+    function showForm(taskId) {
+        document.getElementById('form' + taskId).style.display = 'block';
+    }
+
+    function hideForm(taskId) {
+        document.getElementById('form' + taskId).style.display = 'none';
+    }
+    var visible = false;
+    function showOrHideForm(taskId){
+        if(visible){
+            hideForm(taskId);
+            visible = false;
+        }else{
+            showForm(taskId);
+            visible = true;
+        }
+    }
+</script>
+<script src="{% static 'scripts/tasks.js' %}"></script>
+{% endblock script %}
