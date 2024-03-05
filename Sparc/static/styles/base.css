@@ -1,0 +1,1562 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 110%;
+}
+
+h2 {
+  font-size: 1.625rem;
+  line-height: 1.6rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+button,
+h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.button,
+button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: #054fd8;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.4392156863);
+  border-radius: 20px;
+  border: none;
+  padding: 10px 15px;
+  transition: all 0.5s ease;
+}
+.button:hover,
+button:hover {
+  background-color: #043da6;
+}
+
+h4 {
+  font-size: 1.15rem;
+  line-height: 1.1rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+a,
+p {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+a {
+  text-transform: capitalize;
+}
+
+.huge_text {
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.row-flex {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.column-flex {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.tint {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  aspect-ratio: 1/1;
+  background-color: rgba(0, 0, 0, 0.4392156863);
+}
+
+.tip {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  z-index: 10;
+  width: 70%;
+  background-color: #2c2c2c;
+  border-radius: 5px;
+  border: 1px solid #aeaeae;
+  padding: 2px 5px;
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+html body {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background: #141414;
+  display: flex;
+  gap: 20px;
+}
+html body .sidebar {
+  height: 100%;
+  width: 17%;
+  padding: 20px 20px;
+  border: 1px solid #aeaeae;
+  border-radius: 10px;
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
+html body .sidebar .top,
+html body .sidebar nav,
+html body .sidebar .bottom {
+  width: 100%;
+}
+html body .sidebar .top .menu-item,
+html body .sidebar nav .menu-item,
+html body .sidebar .bottom .menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  text-decoration: none;
+}
+html body .sidebar .top .menu-item img,
+html body .sidebar nav .menu-item img,
+html body .sidebar .bottom .menu-item img {
+  height: 30px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+html body .sidebar .top .menu-item .material-symbols-outlined,
+html body .sidebar nav .menu-item .material-symbols-outlined,
+html body .sidebar .bottom .menu-item .material-symbols-outlined {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+html body .sidebar .top .menu-item p,
+html body .sidebar nav .menu-item p,
+html body .sidebar .bottom .menu-item p {
+  text-transform: capitalize;
+}
+html body .sidebar .top {
+  border-bottom: 1px solid #aeaeae;
+  padding-bottom: 5px;
+}
+html body .sidebar nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+}
+html body .sidebar nav .menu-item {
+  padding: 5px 10px;
+}
+html body .sidebar nav .active {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3294117647), rgba(255, 255, 255, 0.1647058824), rgba(255, 255, 255, 0));
+  position: relative;
+}
+html body .sidebar nav .active::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 4%;
+  background-color: #ffffff;
+  right: 97%;
+  border-radius: 20px;
+}
+html body .sidebar .bottom {
+  border-top: 1px solid #aeaeae;
+  padding-top: 5px;
+}
+html body .sidebar .bottom .profile-button {
+  cursor: pointer;
+}
+html body .sidebar .profile_overlay {
+  display: none;
+  height: 70vh;
+  aspect-ratio: 4/3.5;
+  background-color: rgba(0, 0, 0, 0.4392156863);
+  border: 1px solid #aeaeae;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  z-index: 11;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 0px 20px;
+}
+html body .sidebar .profile_overlay .name_email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+}
+html body .sidebar .profile_overlay .name_email img {
+  height: 70px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+html body .sidebar .profile_overlay .name_email .email {
+  color: #aeaeae;
+}
+html body .sidebar .profile_overlay .details {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+html body .sidebar .profile_overlay .details .detail {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+html body .sidebar .profile_overlay .details .detail .title {
+  text-transform: capitalize;
+  color: #aeaeae;
+}
+html body .sidebar .profile_overlay .details .detail .value {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+html body .sidebar .profile_overlay form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+html body .sidebar .profile_overlay form button {
+  background-color: transparent;
+  border: 1px solid #aeaeae;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+html body .sidebar .profile_overlay form button span,
+html body .sidebar .profile_overlay form button p {
+  transition: all 0.5s ease;
+}
+html body .sidebar .profile_overlay form button:hover {
+  background-color: rgba(0, 0, 0, 0.2509803922);
+  transform: scale(0.95);
+}
+html body .sidebar .profile_overlay form button:hover span,
+html body .sidebar .profile_overlay form button:hover p {
+  transform: scale(0.95);
+}
+html body .sidebar .profile_overlay .close {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+html body main {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+html body main header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+html body main header .icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+html body main header .icons .material-symbols-outlined {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+html body main header .settings_panel {
+  position: absolute;
+  z-index: 10;
+  right: 0px;
+  top: 40px;
+  width: 30vw;
+  padding: 20px;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  background-color: #141414;
+  border: 1px solid #aeaeae;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+}
+html body main header .settings_panel h3 {
+  width: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #aeaeae;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+html body main header .settings_panel .setting {
+  width: 100%;
+  justify-content: space-between;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  padding: 10px 10px;
+}
+html body main header .settings_panel .setting .name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+html body main header .settings_panel .setting .name p {
+  text-transform: capitalize;
+}
+html body main header .settings_panel .setting .input {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+html body main header .settings_panel .setting .input input {
+  font-size: 1rem;
+  text-align: center;
+  background-color: #141414;
+  border: 1px solid #aeaeae;
+  border-radius: 5px;
+  outline: none;
+}
+html body main header .settings_panel .setting .input input:focus {
+  outline: none;
+}
+html body main header .settings_panel .setting .input input::-webkit-inner-spin-button, html body main header .settings_panel .setting .input input::-webkit-outer-spin-button {
+  display: none;
+}
+html body main header .settings_panel .setting .input label {
+  font-size: 0.75rem;
+  color: #aeaeae;
+}
+html body main header .settings_panel .setting .input select {
+  width: 100px;
+  background-color: #141414;
+  border: none;
+  border-radius: 5px;
+  padding: 2px 0px;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  font-weight: 300;
+  text-align: center;
+}
+html body main header .settings_panel .setting .input select:focus {
+  border: none;
+  outline: none;
+}
+html body main header .settings_panel .setting .input select option {
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-align: center;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+}
+html body main header .settings_panel .setting .input select option:focus {
+  background: #2c2c2c;
+}
+html body main header .settings_panel #saveSettings {
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: #054fd8;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.4392156863);
+  border-radius: 20px;
+  border: none;
+  padding: 10px 15px;
+  transition: all 0.5s ease;
+  font-size: 0.8rem;
+}
+html body main header .settings_panel #saveSettings:hover {
+  background-color: #043da6;
+}
+html body main .content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+html body main .dashboard-content {
+  gap: 10px;
+}
+html body main .dashboard-content .top,
+html body main .dashboard-content h3,
+html body main .dashboard-content .bottom {
+  border-radius: 10px;
+}
+html body main .dashboard-content .top {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  gap: 10px;
+}
+html body main .dashboard-content .top .greetings,
+html body main .dashboard-content .top .calendar-dates {
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+  border-radius: 20px;
+  padding: 20px 20px;
+}
+html body main .dashboard-content .top .greetings {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+html body main .dashboard-content .top .greetings .hello {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+}
+html body main .dashboard-content .top .greetings .hello .salutation {
+  width: 100%;
+}
+html body main .dashboard-content .top .greetings .greetings-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+}
+html body main .dashboard-content .top .calendar-dates {
+  height: 100%;
+  width: 75%;
+  display: flex;
+  gap: 10px;
+}
+html body main .dashboard-content .top .calendar-dates .calendar,
+html body main .dashboard-content .top .calendar-dates .important_dates {
+  width: 50%;
+  height: 100%;
+}
+html body main .dashboard-content .top .calendar-dates .calendar {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .month {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .month p {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 300;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .month button {
+  position: absolute;
+  padding: 0 7px;
+  background: transparent;
+  border: none;
+  aspect-ratio: 1/1;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .month #prevMonth {
+  left: 20%;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .month #nextMonth {
+  right: 20%;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .week-days {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .week-days p {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .week-days p::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  aspect-ratio: 1/1;
+  border: 3px solid #aeaeae;
+  border-radius: 50%;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .dates {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .dates .day {
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #aeaeae;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .dates .day:hover {
+  color: #ffffff;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .dates .today {
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+html body main .dashboard-content .top .calendar-dates .calendar .dates .today::after {
+  position: absolute;
+  content: "";
+  height: 120%;
+  aspect-ratio: 1/1;
+  background-color: #054fd8;
+  border-radius: 50%;
+  z-index: -1;
+}
+html body main .dashboard-content .top .calendar-dates .important_dates {
+  padding: 0 10px;
+  border-left: 1px solid #aeaeae;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+html body main .dashboard-content .top .calendar-dates .important_dates .heading .material-symbols-outlined {
+  font-weight: 600;
+}
+html body main .dashboard-content .top .calendar-dates .important_dates ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-right: 5px;
+}
+html body main .dashboard-content .top .calendar-dates .important_dates ul::-webkit-scrollbar {
+  width: 4px;
+}
+html body main .dashboard-content .top .calendar-dates .important_dates ul::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2509803922);
+}
+html body main .dashboard-content .top .calendar-dates .important_dates ul::-webkit-scrollbar-thumb {
+  background-color: #aeaeae;
+  border-radius: 5px;
+}
+html body main .dashboard-content .top .calendar-dates .important_dates ul li {
+  padding: 10px 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2509803922);
+  position: relative;
+}
+html body main .dashboard-content .top .calendar-dates .important_dates ul li .event_date {
+  position: absolute;
+  right: 10px;
+  font-size: 0.75rem;
+  color: #aeaeae;
+}
+html body main .dashboard-content h3 {
+  width: 100%;
+}
+html body main .dashboard-content .bottom {
+  width: 100%;
+  height: 50%;
+  padding: 10px 20px;
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 25px;
+}
+html body main .dashboard-content .bottom .graph {
+  width: 100%;
+  height: 80%;
+  padding: 0px 10px;
+  border-bottom: 2px solid #aeaeae;
+  display: flex;
+  align-items: last baseline;
+  gap: 5px;
+  position: relative;
+}
+html body main .dashboard-content .bottom .graph .title {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  text-transform: capitalize;
+  bottom: 105%;
+  font-weight: 300;
+  text-decoration: underline;
+  color: #aeaeae;
+}
+html body main .dashboard-content .bottom .graph:hover .title {
+  color: #ffffff;
+}
+html body main .dashboard-content .bottom .graph .bar {
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.4392156863);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+html body main .dashboard-content .bottom .graph .bar .score {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 300;
+  bottom: 0;
+  color: #aeaeae;
+  display: none;
+}
+html body main .dashboard-content .bottom .graph .bar:hover {
+  background-color: #054fd8;
+}
+html body main .dashboard-content .bottom .graph .bar:hover .score {
+  display: block;
+}
+html body main .tasks-content {
+  justify-content: flex-start;
+  gap: 20px;
+  border-radius: 20px;
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+  padding: 10px 20px;
+  position: relative;
+  overflow: hidden;
+}
+html body main .tasks-content h4 {
+  width: 100%;
+  text-align: left;
+}
+html body main .tasks-content #task_search_form {
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.2509803922);
+  padding: 5px 5px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+html body main .tasks-content #task_search_form .material-symbols-outlined {
+  color: white;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  padding: 0px 5px;
+  display: flex;
+  align-items: center;
+}
+html body main .tasks-content #task_search_form input[type=text] {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-weight: 300;
+}
+html body main .tasks-content #task_search_form input[type=text]:focus {
+  border: none;
+  outline: none;
+}
+html body main .tasks-content #task_search_form input[type=text]::-moz-placeholder {
+  color: #aeaeae;
+  text-transform: capitalize;
+}
+html body main .tasks-content #task_search_form input[type=text]::placeholder {
+  color: #aeaeae;
+  text-transform: capitalize;
+}
+html body main .tasks-content #task_search_form button[type=submit] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #054fd8;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
+html body main .tasks-content #task_search_form button[type=submit] .material-symbols-outlined {
+  padding: 0;
+}
+html body main .tasks-content .result_paragraph {
+  width: 80%;
+  border-bottom: 1px solid #aeaeae;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  position: relative;
+}
+html body main .tasks-content .result_paragraph p {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+html body main .tasks-content .result_paragraph .search_term {
+  font-weight: 400;
+  font-size: 1rem;
+}
+html body main .tasks-content .result_paragraph .material-symbols-outlined {
+  text-decoration: none;
+  position: absolute;
+  right: 15px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  font-size: 0.9rem;
+}
+html body main .tasks-content .table {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+html body main .tasks-content .table .heading_row {
+  gap: 0;
+}
+html body main .tasks-content .table .heading_row .header {
+  width: 20%;
+  text-align: left;
+  color: #aeaeae;
+  text-transform: capitalize;
+}
+html body main .tasks-content .table .list {
+  width: 100%;
+  height: 90%;
+  padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+html body main .tasks-content .table .list::-webkit-scrollbar {
+  width: 6px;
+}
+html body main .tasks-content .table .list::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2509803922);
+}
+html body main .tasks-content .table .list::-webkit-scrollbar-thumb {
+  background-color: #aeaeae;
+  border-radius: 5px;
+}
+html body main .tasks-content .table .list .task {
+  gap: 0px;
+  flex-shrink: 0;
+  padding: 15px 10px;
+  background-color: rgba(0, 0, 0, 0.2509803922);
+  border-radius: 10px;
+  cursor: default;
+  position: relative;
+}
+html body main .tasks-content .table .list .task:hover {
+  background-color: rgba(0, 0, 0, 0.4392156863);
+}
+html body main .tasks-content .table .list .task:hover .title::before {
+  border-color: #ffffff;
+}
+html body main .tasks-content .table .list .task p {
+  width: 20%;
+  font-weight: 300;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+}
+html body main .tasks-content .table .list .task .title {
+  position: relative;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+}
+html body main .tasks-content .table .list .task .title::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  height: 65%;
+  aspect-ratio: 1/1;
+  border: 3px solid #aeaeae;
+  border-radius: 50%;
+}
+html body main .tasks-content .table .list .task .description {
+  width: 25%;
+  padding-right: 20px;
+  cursor: pointer;
+}
+html body main .tasks-content .table .list .task .description:hover ~ .full_description {
+  display: block;
+}
+html body main .tasks-content .table .list .task .full_description {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  left: 25%;
+  top: 60%;
+  width: 20%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #2c2c2c;
+  background-color: #141414;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.4392156863);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #aeaeae;
+}
+html body main .tasks-content .table .list .task .full_description:hover {
+  display: block;
+  color: #ffffff;
+}
+html body main .tasks-content .table .list .task .unit {
+  width: 15%;
+}
+html body main .tasks-content .table .list .task .status {
+  width: 20%;
+  font-size: 0.8rem;
+  text-align: center;
+  border-radius: 10px;
+  padding: 1px 0px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+html body main .tasks-content .table .list .task .completed {
+  border: 1px solid #3dd9d6;
+  color: #3dd9d6;
+}
+html body main .tasks-content .table .list .task .in {
+  border: 1px solid #e4f671;
+  color: #e4f671;
+}
+html body main .tasks-content .table .list .task .pending {
+  border: 1px solid #ea5222;
+  color: #ea5222;
+}
+html body main .tasks-content .table .list .task .action-buttons {
+  position: absolute;
+  z-index: 999;
+  left: 75%;
+  top: 10px;
+  width: 20%;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background: #141414;
+  border-radius: 10px;
+  border: 2px solid #2c2c2c;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.4392156863);
+}
+html body main .tasks-content .table .list .task .action-buttons:hover {
+  display: flex;
+}
+html body main .tasks-content .table .list .task .action-buttons button {
+  width: 100%;
+  padding: 5px 0px;
+  cursor: pointer;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+html body main .tasks-content .table .list .task .action-buttons button:hover {
+  color: #ffffff;
+  background-color: #054fd8;
+}
+html body main .tasks-content .table .list .task .action-buttons div {
+  width: 100%;
+}
+html body main .tasks-content .table .list .task .action-buttons div label {
+  display: none;
+}
+html body main .tasks-content .table .list .task .action-buttons div select {
+  width: 100%;
+  background-color: #141414;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-align: center;
+}
+html body main .tasks-content .table .list .task .action-buttons div select:focus {
+  border: none;
+  outline: none;
+}
+html body main .tasks-content .table .list .task .action-buttons div select option {
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-align: center;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+}
+html body main .tasks-content .table .list .task .action-buttons div select option:focus {
+  background: #2c2c2c;
+}
+html body main .tasks-content .table .list .task .due_date {
+  padding-left: 20px;
+  font-size: 0.8rem;
+  color: #aeaeae;
+}
+html body main .tasks-content .table .list .invisible_task {
+  width: 100%;
+  background: transparent;
+  height: 12%;
+}
+html body main .tasks-content .table .list .invisible_task:hover {
+  background: transparent;
+  cursor: default;
+}
+html body main .tasks-content #add_task_button {
+  position: absolute;
+  bottom: 2%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: #054fd8;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.4392156863);
+  border-radius: 20px;
+  border: none;
+  padding: 10px 15px;
+  transition: all 0.5s ease;
+}
+html body main .tasks-content #add_task_button:hover {
+  background-color: #043da6;
+}
+html body main .tasks-content #task_creation_form {
+  position: absolute;
+  z-index: 11;
+  width: 40%;
+  height: 100%;
+  padding: 30px 30px;
+  top: 0;
+  right: -50%;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+  border-radius: 20px;
+  transition: all 0.5s ease-out;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  -moz-column-gap: 3%;
+       column-gap: 3%;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper h2 {
+  width: 100%;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper p {
+  width: 100%;
+  color: #aeaeae;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper label {
+  order: 2;
+  width: 90%;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper .material-symbols-outlined {
+  order: 1;
+  width: 7%;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper input,
+html body main .tasks-content #task_creation_form .fieldwrapper textarea,
+html body main .tasks-content #task_creation_form .fieldwrapper select {
+  order: 3;
+  width: 100%;
+  height: 28px;
+  margin-left: 10%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #aeaeae;
+  font-weight: 300;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper input:focus,
+html body main .tasks-content #task_creation_form .fieldwrapper textarea:focus,
+html body main .tasks-content #task_creation_form .fieldwrapper select:focus {
+  outline: none;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper input::-moz-placeholder, html body main .tasks-content #task_creation_form .fieldwrapper textarea::-moz-placeholder, html body main .tasks-content #task_creation_form .fieldwrapper select::-moz-placeholder {
+  color: #aeaeae;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper input::placeholder,
+html body main .tasks-content #task_creation_form .fieldwrapper textarea::placeholder,
+html body main .tasks-content #task_creation_form .fieldwrapper select::placeholder {
+  color: #aeaeae;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper textarea {
+  resize: auto;
+  max-height: 64px;
+  flex-grow: 1;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper textarea::-webkit-scrollbar {
+  width: 4px;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper textarea::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2509803922);
+}
+html body main .tasks-content #task_creation_form .fieldwrapper textarea::-webkit-scrollbar-thumb {
+  background-color: #aeaeae;
+  border-radius: 5px;
+}
+html body main .tasks-content #task_creation_form .fieldwrapper select option {
+  background-color: rgba(0, 0, 0, 0.4392156863);
+  color: #141414;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+html body main .tasks-content #task_creation_form #task_added {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: #054fd8;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.2509803922);
+  border-radius: 20px;
+  border: none;
+  padding: 10px 15px;
+  bottom: -120%;
+  transition: all 0.5s ease;
+}
+html body main .tasks-content #task_creation_form #task_added:hover {
+  background-color: #043da6;
+}
+html body main .focus-hub-content {
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+}
+html body main .focus-hub-content .session_goal,
+html body main .focus-hub-content .history {
+  width: 100%;
+  height: 49%;
+}
+html body main .focus-hub-content .session_goal .goal,
+html body main .focus-hub-content .session_goal .session {
+  height: 100%;
+  width: 50%;
+  background: rgba(0, 0, 0, 0.2509803922);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+html body main .focus-hub-content .session_goal .session {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+html body main .focus-hub-content .session_goal .session .info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+html body main .focus-hub-content .session_goal .session .info:hover ~ .tip {
+  display: block;
+}
+html body main .focus-hub-content .session_goal .session .set_timer {
+  width: 100%;
+}
+html body main .focus-hub-content .session_goal .session .set_timer .custom_input {
+  background-color: rgba(0, 0, 0, 0.4392156863);
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border-bottom: 2px solid #aeaeae;
+}
+html body main .focus-hub-content .session_goal .session .set_timer .custom_input button {
+  background-color: #141414;
+  border: none;
+  border-radius: 0;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+html body main .focus-hub-content .session_goal .session .set_timer .custom_input button:hover {
+  background-color: rgba(0, 0, 0, 0.2509803922);
+}
+html body main .focus-hub-content .session_goal .session .set_timer .custom_input input {
+  width: 7vw;
+  background: transparent;
+  border: none;
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: 10px;
+}
+html body main .focus-hub-content .session_goal .session .set_timer .custom_input input::-webkit-outer-spin-button, html body main .focus-hub-content .session_goal .session .set_timer .custom_input input::-webkit-inner-spin-button {
+  display: none;
+}
+html body main .focus-hub-content .session_goal .session .set_timer .custom_input input:focus {
+  border: none;
+  outline: none;
+}
+html body main .focus-hub-content .session_goal .session .set_timer .custom_input label {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #aeaeae;
+  bottom: 0;
+}
+html body main .focus-hub-content .session_goal .session .set_timer #breaks_info {
+  text-transform: capitalize;
+  color: #aeaeae;
+}
+html body main .focus-hub-content .session_goal .session .set_timer #start_session {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5px;
+  background-color: #054fd8;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.4392156863);
+  border-radius: 10px;
+  border: none;
+  padding: 5px 15px;
+  transition: all 0.5s ease;
+}
+html body main .focus-hub-content .session_goal .session .set_timer #start_session:hover {
+  background-color: #043da6;
+}
+html body main .focus-hub-content .session_goal .session .set_timer #start_session .material-symbols-outlined {
+  font-size: 2.2rem;
+}
+html body main .focus-hub-content .session_goal .session .set_timer #start_session p {
+  font-size: 1.2rem;
+}
+html body main .focus-hub-content .session_goal .session .timer {
+  display: none;
+  width: 100%;
+  gap: 10px;
+}
+html body main .focus-hub-content .session_goal .session .timer #goalParagraph {
+  font-size: 0.8rem;
+  color: #aeaeae;
+}
+html body main .focus-hub-content .session_goal .session .timer .background {
+  width: 30%;
+  aspect-ratio: 1/1;
+  background: #141414;
+  border-radius: 50%;
+  border: 10px solid #2c2c2c;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+html body main .focus-hub-content .session_goal .session .timer .background .text {
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(50%);
+  gap: 0px;
+}
+html body main .focus-hub-content .session_goal .session .timer .background .text #duration_paragraph {
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+}
+html body main .focus-hub-content .session_goal .session .timer .background .text .units {
+  font-size: 0.8rem;
+  color: gray;
+}
+html body main .focus-hub-content .session_goal .session .timer .background .foreground {
+  width: 200%;
+  height: 0%;
+  border-radius: 50%;
+  background-color: #054fd8;
+}
+html body main .focus-hub-content .session_goal .session .timer .buttons {
+  justify-content: center;
+}
+html body main .focus-hub-content .session_goal .session .timer .buttons form {
+  justify-content: center;
+}
+html body main .focus-hub-content .session_goal .session .timer .buttons form .button,
+html body main .focus-hub-content .session_goal .session .timer .buttons form button {
+  border-radius: 70px;
+  padding: 10px;
+  font-size: 2rem;
+}
+html body main .focus-hub-content .session_goal .goal .top {
+  justify-content: space-between;
+  position: relative;
+}
+html body main .focus-hub-content .session_goal .goal .top p {
+  text-transform: capitalize;
+}
+html body main .focus-hub-content .session_goal .goal .top .info {
+  cursor: pointer;
+}
+html body main .focus-hub-content .session_goal .goal .top .info:hover ~ .tip {
+  display: flex;
+}
+html body main .focus-hub-content .session_goal .goal .top .tip {
+  left: 30%;
+}
+html body main .focus-hub-content .session_goal .goal .trend {
+  height: 90%;
+  justify-content: space-between;
+}
+html body main .focus-hub-content .session_goal .goal .trend .column-flex {
+  width: 32%;
+  height: 80%;
+  border-radius: 10px;
+}
+html body main .focus-hub-content .session_goal .goal .trend .column-flex p {
+  color: #aeaeae;
+  text-transform: capitalize;
+}
+html body main .focus-hub-content .session_goal .goal .trend .column-flex h1 {
+  color: #ffffff;
+}
+html body main .focus-hub-content .session_goal .goal .trend .present_day {
+  border: 5px solid #054fd8;
+  border-radius: 50%;
+  width: 32%;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+html body main .focus-hub-content .session_goal .goal .trend .present_day .fill {
+  position: absolute;
+  bottom: -1px;
+  width: 200%;
+  border-radius: 50%;
+  background-color: #054fd8;
+  opacity: 0.5;
+  z-index: 1;
+}
+html body main .focus-hub-content .session_goal .goal .trend .present_day h1 {
+  font-size: 3rem;
+  line-height: 3rem;
+}
+html body main .focus-hub-content .session_goal .goal .trend .present_day p,
+html body main .focus-hub-content .session_goal .goal .trend .present_day h1 {
+  text-transform: capitalize;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4392156863);
+  z-index: 2;
+  color: #ffffff;
+}
+html body main .focus-hub-content .history {
+  background: rgba(0, 0, 0, 0.2509803922);
+  border-radius: 10px;
+  align-items: flex-start;
+  padding: 10px 20px;
+}
+html body main .focus-hub-content .history p {
+  text-transform: capitalize;
+}
+html body main .focus-hub-content .history .days {
+  height: 97%;
+}
+html body main .focus-hub-content .history .days .day {
+  height: 100%;
+  width: 20%;
+  gap: 30px;
+  background: linear-gradient(135deg, rgba(194, 194, 194, 0.4392156863), rgba(160, 160, 160, 0.2549019608), rgba(255, 255, 255, 0));
+  background-size: 200%;
+  background-position-x: 100%;
+  background-position-y: 100%;
+  transition: all 0.5s ease;
+  border-radius: 10px;
+}
+html body main .focus-hub-content .history .days .day:hover {
+  background-position-x: 0;
+  background-position-y: 0;
+}
+html body main .focus-hub-content .history .days .day:hover .date {
+  color: #ffffff;
+}
+html body main .focus-hub-content .history .days .day .date {
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  color: #aeaeae;
+}
+html body main .focus-hub-content .history .days .day .ellipse {
+  width: 70%;
+  aspect-ratio: 1/1;
+  border: 5px solid #054fd8;
+  border-radius: 50%;
+  gap: 0px;
+}
+html body main .focus-hub-content .history .days .day .ellipse .time_focused {
+  font-size: 1.7rem;
+  line-height: 1.7rem;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+}
+html body main .focus-hub-content .history .days .day .ellipse .time_focused span {
+  font-size: 0.8rem;
+  color: #aeaeae;
+  font-weight: 500;
+}
+html body main .focus-hub-content .history .days .day .ellipse .indicators {
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  color: #aeaeae;
+}
+html body main .resources-content {
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+}
+html body main .resources-content h4 {
+  width: 100%;
+  height: 5%;
+}
+html body main .resources-content .line {
+  height: 95%;
+  width: 0.5%;
+  border-radius: 10px;
+  background: #aeaeae;
+}
+html body main .resources-content .panel {
+  height: 95%;
+  gap: 2%;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+html body main .resources-content .panel .section {
+  height: 49%;
+  padding: 10px 10px;
+  background: rgba(0, 0, 0, 0.2509803922);
+  border-radius: 10px;
+  justify-content: flex-start;
+  gap: 5px;
+}
+html body main .resources-content .panel .section .title {
+  align-items: center;
+  height: 10%;
+}
+html body main .resources-content .panel .section .title h4 {
+  font-weight: 400;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+html body main .resources-content .panel .section .list {
+  width: 95%;
+  height: 95%;
+  padding: 5px 5px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  overflow-y: scroll;
+  padding-right: 5px;
+}
+html body main .resources-content .panel .section .list::-webkit-scrollbar {
+  width: 4px;
+}
+html body main .resources-content .panel .section .list::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2509803922);
+}
+html body main .resources-content .panel .section .list::-webkit-scrollbar-thumb {
+  background-color: #aeaeae;
+  border-radius: 5px;
+}
+html body main .resources-content .panel .section .list .nothing_else {
+  height: 100%;
+  width: 100%;
+  color: #aeaeae;
+}
+html body main .resources-content .panel .section .list .item {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2509803922);
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+html body main .resources-content .panel .section .list .item:hover {
+  background: rgba(0, 0, 0, 0.4392156863);
+}
+html body main .resources-content .menu {
+  width: 34%;
+}
+html body main .resources-content .details {
+  width: 65%;
+}
+html body main .resources-content .details .section {
+  gap: 20px;
+}
+html body main .resources-content .details .section .list {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2509803922);
+}
+html body main .resources-content .details .section .list .item {
+  background: transparent;
+}
+html body main .resources-content .details .section .grid {
+  padding: 10px;
+}
+html body main .resources-content .details .section .grid .item {
+  background: #141414;
+  width: 9vw;
+  padding: 5px;
+  aspect-ratio: 4/3;
+  border: 1px solid #3dd9d6;
+  border-radius: 10px;
+  align-items: first baseline;
+  justify-content: space-between;
+}
+html body main .resources-content .details .section .grid .item p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  width: 100%;
+}
+html body main .resources-content .details .section .grid .item .buttons {
+  justify-content: flex-end;
+}
+html body main .resources-content .details .section .grid .item .buttons a {
+  text-decoration: none;
+}
+html body main .resources-content .details .section .grid .item .buttons a:hover {
+  color: #3dd9d6;
+}
+html body main .performance-content {
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+  padding: 10px;
+  gap: 3%;
+}
+html body main .performance-content h4,
+html body main .performance-content .overview,
+html body main .performance-content .details {
+  border: 1px solid #aeaeae;
+  width: 100%;
+}
+html body main .performance-content h4 {
+  height: 3%;
+}
+html body main .performance-content .overview {
+  height: 30%;
+}
+html body main .performance-content .details {
+  height: 55%;
+}/*# sourceMappingURL=base.css.map */

@@ -1,0 +1,36 @@
+{% extends "main/resources.html" %}
+
+{% block details %}
+<div class="section column-flex">
+    <div class="title row-flex">
+        <span class="material-symbols-outlined">format_list_bulleted</span>
+        <h4>course outline ({{unit.name}})</h4>
+    </div>
+    <div class="list row-flex" style=" padding: 0;">
+        <div class="item">
+            {{ unit.outline|linebreaksbr }}
+        </div>
+    </div>
+</div>
+<div class="section column-flex">
+    <div class="title row-flex">
+        <span class="material-symbols-outlined">widgets</span>
+        <h4>available resources</h4>
+    </div>
+    <div class="list row-flex grid">
+        {% for resource in resources %}
+        <div class="item column-flex">
+            <p>{{ resource.name }} - {{unit.name}} </p>
+            {% if resource.file_attachment %}
+            <div class="buttons row-flex">
+                <a class="material-symbols-outlined" href="{{ resource.file_attachment.url }}" download>download</a>
+                <a class="material-symbols-outlined" href="#" style="cursor: not-allowed;">open_in_new</a>
+            </div>
+            {% else %}
+            <span>No file available for download</span>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock details %}

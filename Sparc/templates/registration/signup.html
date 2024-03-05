@@ -1,0 +1,15 @@
+{% extends "registration/form.html" %}
+{% load static %}
+{% block title %}
+Create A Sparc Account
+{% endblock title %}
+{% block content %}
+<form method="post">
+    <h2>Let's create your account</h2>
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">sign up</button>
+</form>
+{% endblock content %}

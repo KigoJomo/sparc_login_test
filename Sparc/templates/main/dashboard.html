@@ -1,0 +1,100 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block page_name %}
+Dashboard
+{% endblock page_name %}
+
+{% block content %}
+<div class="dashboard-content content">
+
+    <div class="top">
+        <div class="greetings">
+            <div class="hello">
+                <h1 class="salutation">Hello, {{ user.first_name }}</h1>
+                <div class="course row-flex">
+                    <span class="material-symbols-outlined">auto_stories</span>
+                    <p>{{ user.course.name }}</p>
+                </div>
+            </div>
+            <div class="greetings-bottom">
+                <div class="bottom-date row-flex">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <p id="dateElement"></p>
+                </div>
+                <div class="bottom-time row-flex">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <p class="huge_text" id="timeElement"></p>
+                </div>
+            </div>
+        </div>
+        <div class="calendar-dates">
+            <div class="calendar">
+                <div class="month">
+                    <button id="prevMonth">&lt;</button>
+                    <p id="currentMonth"></p>
+                    <button id="nextMonth">&gt;</button>
+                </div>
+                <div class="week-days">
+                    <p>s</p>
+                    <p>m</p>
+                    <p>t</p>
+                    <p>w</p>
+                    <p>t</p>
+                    <p>f</p>
+                    <p>s</p>
+                </div>
+                <div class="dates"></div>
+            </div>
+            <div class="important_dates">
+                <div class="heading row-flex">
+                    <span class="material-symbols-outlined">info</span>
+                    <h2>important dates</h2>
+                </div>
+                {% if upcoming_dates %}
+                <ul>
+                    {% for date in upcoming_dates %}
+                    <li class="row-flex" title="{{ date.description }}">
+                        <span class="material-symbols-outlined">event</span>
+                        <p>{{ date.title }}</p>
+                        <p class="event_date">{{ date.date|date:"F j, Y" }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="no-events">No upcoming important dates</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <h3>performance overview</h3>
+    <div class="bottom">
+        {% for year in user_years %}
+            {% for semester in user_semesters %}
+                <div class="graph">
+                    <div class="title">year {{year}}, semester {{semester}}</div>
+                    {% for performance in performances %}
+                        {% if performance.unit.year == year and performance.unit.semester == semester %}
+                            <div class="bar" style="height: {{performance.score}}%;" title="{{ performance.unit.name }}">
+                                <div class="score">
+                                    {{ performance.score }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock content %}
+{% block script %}
+<script>
+</script>
+
+<script src="{% static 'scripts/dash.js' %}"></script>
+{% endblock script %}

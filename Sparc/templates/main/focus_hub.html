@@ -1,0 +1,159 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}
+Focus Hub
+{% endblock title %}
+
+{% block page_name %}
+Focus Hub
+{% endblock page_name %}
+{% block settings %}
+<form action="{% url 'focus-hub' %}" id="focus_settings_form" class="column-flex" method="post">
+    {% csrf_token %}
+    <div class="setting row-flex">
+        <div class="name">
+            <span class="material-symbols-outlined">mindfulness</span>
+            <p>focus period</p>
+        </div>
+        <div class="input">
+            <input type="number" name="focus_period" id="id_focus_period" min="20" max="90"
+                value="{{ user.focus_period }}">
+            <label for="id_focus_period">mins</label>
+        </div>
+    </div>
+    <div class="setting row-flex">
+        <div class="name">
+            <span class="material-symbols-outlined">physical_therapy</span>
+            <p>breaks</p>
+        </div>
+        <div class="input">
+            <input type="number" name="break_duration" id="id_break_duration" min="5" max="20"
+                value="{{ user.break_duration }}">
+            <label for="id_break_duration">mins</label>
+        </div>
+    </div>
+    <div class="setting row-flex">
+        <div class="name">
+            <span class="material-symbols-outlined">center_focus_weak</span>
+            <p>Daily goal</p>
+        </div>
+        <div class="input">
+            <input type="number" name="daily_goal" id="id_daily_goal" min="1" max="8" value="{{ user.daily_goal }}">
+            <!-- {{ settings_form.daily_goal }} -->
+            <label for="id_daily_goal">hours</label>
+        </div>
+    </div>
+    <button type="submit" name="focus_settings_submit" id="saveSettings">save changes</button>
+</form>
+{% endblock settings %}
+{% block content %}
+<div class="content focus-hub-content">
+    <h4>Time to get things done</h4>
+    <div class="session_goal row-flex">
+        <div class="session">
+            <span class="material-symbols-outlined info">info</span>
+            <div class="tip">You can go over to settings to adjust the duration of your focus periods and breaks to your
+                liking.</div>
+            <div class="set_timer column-flex">
+                <h4>Focus session</h4>
+                <div class="custom_input">
+                    <button id="decrement">-</button>
+                    <input type="number" name="duration" id="SessionDurationInput" min="{{session_duration}}" max="300"
+                        step="{{ session_duration }}" value="{{ session_duration }}">
+                    <label for="SessionDurationInput">mins</label>
+                    <button id="increment">+</button>
+                </div>
+                <p id="breaks_info"></p>
+                <button id="start_session">
+                    <span class="material-symbols-outlined">
+                        play_arrow
+                    </span>
+                    <p>start</p>
+                </button>
+            </div>
+
+            <div class="column-flex timer">
+                <audio id="timerCompleteSound">
+                    <source src="../../static/sounds/alert.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                <h2>Time to focus</h2>
+                <div class="background">
+                    <div class="foreground" id="progressIndicator">
+                    </div>
+                    <div class="column-flex text">
+                        <p id="duration_paragraph"></p>
+                        <p class="units">mins : sec </p>
+                    </div>
+                </div>
+                <div class="buttons row-flex">
+                    <form action="{% url 'focus-hub' %}" method="post" id="session_create_form" class="row-flex">
+                        {% csrf_token %}
+                        <input type="number" name="session_duration_mins" required="" id="id_session_duration_mins"
+                            style="display: none;">
+                        <input type="number" name="session_duration_sec" required="" id="id_session_duration_sec"
+                            style="display: none;">
+                        <div id="pauseTimer" class="button material-symbols-outlined">pause
+                        </div>
+                        <div id="continueTimer" class="button material-symbols-outlined" style="display: none;">
+                            play_arrow
+                        </div>
+                        <button id="terminateTimer" class="material-symbols-outlined" type="submit"
+                            name="session_submit">stop_circle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="goal">
+            <div class="top row-flex">
+                <p>daily progress</p>
+                <span class="material-symbols-outlined info">info</span>
+                <div class="tip">You can head over to settings to change your daily focus goal</div>
+            </div>
+            <div class="trend row-flex">
+                <div class="column-flex">
+                    <p>yesterday</p>
+                    <h2>{{ yesterday_total_hours|floatformat:1 }}</h2>
+                    <p>hours</p>
+                </div>
+                <div class="present_day">
+                    <div class="fill" style="height: {{today_percentage}}%;"></div>
+                    <p>today</p>
+                    <h1>{{ today_total_hours|floatformat:1 }}</h1>
+                    <p>hours</p>
+                </div>
+                <div class="column-flex">
+                    <p>streak</p>
+                    <h2>{{ streak_days }}</h2>
+                    <p>days</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="history column-flex">
+        <p>history</p>
+        <!-- 4. History -->
+        <!-- <ul>
+            {% for entry in history_data %}
+            <li>Date: {{ entry.date }} - Total hours: {{ entry.total_hours|floatformat:2 }}</li>
+            {% endfor %}
+        </ul> -->
+        <div class="days row-flex">
+            {% for entry in history_data %}
+            <div class="day column-flex">
+                <p class="date">{{ entry.date }}</p>
+                <div class="column-flex ellipse">
+                    <p class="time_focused row-flex">
+                        {{ entry.total_hours|floatformat:2 }}<span>/{{user.daily_goal}}</span> </p>
+                    <p class="indicators">hrs</p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script src="{% static 'scripts/focus.js' %}"></script>
+{% endblock script %}

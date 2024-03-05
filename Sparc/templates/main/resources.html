@@ -1,0 +1,48 @@
+{% extends "main/base.html" %}
+{% block title %}
+Resources
+{% endblock title %}
+
+{% block page_name %}
+Resources Library
+{% endblock page_name %}
+
+{% block content %}
+<div class="resources-content content">
+
+    <h4>easily find anything you need</h4>
+
+    <div class="menu panel column-flex">
+        <div class="section column-flex">
+            <div class="title row-flex">
+                <span class="material-symbols-outlined">auto_stories</span>
+                <h4>educational material</h4>
+            </div>
+            <div class="list row-flex">
+                {% for unitobject in units %}
+                <a class="item" href="{% url 'unit_details' unitobject.code|upper %}">{{ unitobject.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="section column-flex">
+            <div class="title row-flex">
+                <span class="material-symbols-outlined">add_circle</span>
+                <h4>others</h4>
+            </div>
+            <div class="list row-flex">
+                <!-- <div class="item"></div> -->
+                <p class="nothing_else column-flex">No other materials</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="details panel column-flex">
+        {% block details %}
+
+        {% endblock details %}
+    </div>
+
+</div>
+{% endblock content %}

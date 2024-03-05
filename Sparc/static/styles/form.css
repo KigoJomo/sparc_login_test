@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 1.625rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+button,
+h3 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+a,
+p {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+a {
+  text-transform: capitalize;
+}
+
+.huge_text {
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+html {
+  height: 100vh;
+  overflow: hidden;
+}
+html body {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(129deg, #5c8281 11.4%, #5b3d73 39.3%, #162727 99.41%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  position: relative;
+}
+html body #bodyBackgroundLogo {
+  position: absolute;
+  z-index: -1;
+  width: 70vw;
+  height: 40vh;
+}
+html body form {
+  width: 475px;
+  max-height: 80vh;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.2509803922);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid #aeaeae;
+  position: relative;
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+}
+html body form::before, html body form::after {
+  position: absolute;
+  content: "";
+  bottom: 100%;
+  height: 100%;
+  width: 0px;
+  border: 2px dotted #aeaeae;
+}
+html body form::before {
+  left: 10%;
+}
+html body form::after {
+  right: 10%;
+}
+html body form::-webkit-scrollbar {
+  width: 10px;
+}
+html body form::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+html body form::-webkit-scrollbar-thumb {
+  background-color: #aeaeae;
+}
+html body form p {
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid #aeaeae;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  position: relative;
+}
+html body form p span {
+  display: none;
+}
+html body form p label {
+  position: absolute;
+  z-index: -1;
+  left: 5px;
+  top: -5px;
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-transform: capitalize;
+  color: #3dd9d6;
+  transition: all 0.5s ease;
+}
+html body form p #id_reg_number,
+html body form p #id_first_name,
+html body form p #id_last_name {
+  text-transform: capitalize;
+}
+html body form p input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-weight: 300;
+  padding: 5px 40px;
+}
+html body form p input:focus {
+  outline: none;
+}
+html body form p select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #ffffff;
+}
+html body form p select:focus {
+  outline: none;
+  border: none;
+}
+html body form p select option {
+  color: #141414;
+  background: rgba(0, 0, 0, 0.2509803922);
+  font-size: 0.9rem;
+}
+html body form ul {
+  padding-left: 40px;
+}
+html body form ul li {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #aeaeae;
+}
+html body form .errorlist {
+  position: sticky;
+  border: 1px solid #ea5222;
+  top: 0;
+}
+html body form .errorlist li {
+  color: #ea5222;
+  font-weight: 400;
+}
+html body form .links {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+html body form .links a {
+  color: #aeaeae;
+}
+html body form button {
+  background-color: #2553a8;
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.2509803922);
+  padding: 10px 0px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+html body form button:hover {
+  background-color: #1c3e7e;
+}/*# sourceMappingURL=form.css.map */
