@@ -129,6 +129,8 @@ def focus_hub(request):
     streak_start_date = datetime.now().date() - timedelta(days=user.streak)
     streak_sessions = Session.objects.filter(user=user, date__gte=streak_start_date, date__lte=datetime.now().date())
     streak_days = len(set([session.date for session in streak_sessions]))
+    if yesterday_total_hours == 0:
+        streak_days = 0
 
     # 4. History: Get each day for the past week leading up to today and the number of hours focused
     history_start_date = datetime.now().date() - timedelta(days=6)
@@ -208,4 +210,15 @@ def unit_details(request, unit_code):
 
 @login_required(login_url='login/')
 def performance(request):
-    return render(request, 'main/performance.html')
+    user = request.user
+    user_years = list(range(1, user.year + 1))
+    user_semesters = list(range(1, user.semester + 1))
+    performances = Performance.objects.filter(user=user.reg_number)
+
+
+    context = {
+        'performances': performances,
+        'user_years': user_years,
+        'user_semesters': user_semesters,
+    }
+    return render(request, 'main/performance.html', context)

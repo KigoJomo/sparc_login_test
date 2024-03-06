@@ -1,2 +1,19 @@
-kigo.jomo22@students.dkut.ac.ke
-C025-01-0811/2022
+function getGrade(parameter) {
+  let gradeToReturn;
+
+  if (70 <= parameter < 100) {
+    gradeToReturn = 'A'
+  } else if (60 <= parameter <= 69) {
+    gradeToReturn = 'B'
+  } else if (50 <= parameter <= 59) {
+    gradeToReturn = 'C'
+  } else if (40 <= parameter <= 49) {
+    gradeToReturn = 'D'
+  } else if (0 <= parameter <= 39) {
+    gradeToReturn = 'E'
+  }
+
+  return gradeToReturn;
+}
+
+Is this the correct way to write it?

@@ -1,4 +1,5 @@
 {% extends "main/base.html" %}
+{% load static %}
 {% block title %}
 Performance
 {% endblock title %}
@@ -10,8 +11,75 @@ Performance
 {% block content %}
 <div class="performance-content content column-flex">
     <h4>overview</h4>
-    <div class="overview row-flex"></div>
+    <div class="overview row-flex">
+        <div class="markers">
+            <div class="marker"></div>
+            <div class="marker"></div>
+            <div class="marker"></div>
+            <div class="marker"></div>
+        </div>
+        {% for year in user_years %}
+        {% for semester in user_semesters %}
+        <div class="graph">
+            <!-- <div class="title">year {{year}}, semester {{semester}}</div> -->
+            {% for performance in performances %}
+            {% if performance.unit.year == year and performance.unit.semester == semester %}
+            <div class="bar" style="height: {{performance.score}}%;"
+                title="{{performance.unit.year}}.{{performance.unit.semester}} {{ performance.unit.name }}">
+                <div class="score">
+                    {{ performance.score }}
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
     <h4>details</h4>
-    <div class="details"></div>
+    <div id="details" class="details">
+        <div class="buttons row-flex">
+            <button id="scrollLeft">&lt;</button>
+            <button id="scrollRight">&gt;</button>
+        </div>
+        {% for year in user_years %}
+        {% for semester in user_semesters %}
+        <div class="report column-flex">
+            <h3>year {{ year }}, semester {{ semester }}</h3>
+            <div class="table column-flex">
+                <div class="heading_row row-flex">
+                    <p class="heading">Unit</p>
+                    <p class="heading">score</p>
+                    <p class="heading">grade</p>
+                </div>
+                <div class="list column-flex">
+                    {% for performance in performances %}
+                    {% if performance.unit.year == year and performance.unit.semester == semester %}
+                    <div class="record row-flex">
+                        <div class="name column row-flex">
+                            <span class="material-symbols-outlined">blur_on</span>
+                            <p>{{ performance.unit.name }}</p>
+                        </div>
+                        <p class="column score">{{ performance.score }}</p>
+                        <p class="column">{{ performance.grade }}</p>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="average record row-flex">
+                        <div class="column">Average</div>
+                        <div class="column avg"></div>
+                        <div class="column grd"></div>
+                    </div>
+                    <div class="blank record"></div>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}
+{% block script %}
+<script src="{% static 'scripts/performance.js' %}"></script>
+{% endblock script %}

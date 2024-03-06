@@ -43,11 +43,14 @@ Tasks
         <div class="list">
             {% for task in tasks %}
             <div class="task row-flex">
-                <p class="title">{{ task.title }}</p>
+                <div class="title">
+                    <p title="{{task.title}}">{{ task.title }}</p>
+                </div>
                 <p class="description">{{ task.description }}</p>
                 <span class="full_description">{{ task.description }}</span>
                 <p class="unit">{{ task.unit.name }}</p>
-                <p class="status {{ task.status|lower }}" onclick="showOrHideForm('{{ task.id }}')" title="Click to view more options">{{ task.status }}</p>
+                <p class="status {{ task.status|lower }}" onclick="showForm('{{ task.id }}')"
+                    title="Click to view more options">{{ task.status }}</p>
                 <form method="post" action="{% url 'tasks' %}" id="form{{ task.id }}" class="action-buttons">
                     {% csrf_token %}
                     {{ task_status_form }}
@@ -104,23 +107,27 @@ Tasks
 {% endblock content %}
 {% block script %}
 <script>
-    function showForm(taskId) {
-        document.getElementById('form' + taskId).style.display = 'block';
-    }
 
-    function hideForm(taskId) {
-        document.getElementById('form' + taskId).style.display = 'none';
-    }
-    var visible = false;
-    function showOrHideForm(taskId){
-        if(visible){
-            hideForm(taskId);
-            visible = false;
-        }else{
-            showForm(taskId);
-            visible = true;
+    const statusForms = document.querySelectorAll(".action-buttons");
+    var thisIsVisible = false;
+    function showForm(taskId) {
+        let thisForm = document.getElementById('form' + taskId);
+        if (thisIsVisible) {
+            statusForms.forEach((otherform) => {
+                otherform.style.display = "none";
+            });
+            thisForm.style.display = 'none'
+            thisIsVisible = false
+        } else if (!thisIsVisible) {
+            //hide all othe forms
+            statusForms.forEach((otherform) => {
+                otherform.style.display = "none";
+            });
+            thisForm.style.display = 'flex'
+            thisIsVisible = true
         }
     }
+
 </script>
 <script src="{% static 'scripts/tasks.js' %}"></script>
 {% endblock script %}
